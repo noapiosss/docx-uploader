@@ -480,3 +480,4 @@ $RECYCLE.BIN/
 .vscode/*
 bin/*
 obj/*
+Azure/*

@@ -5,6 +5,6 @@ namespace Web.Clients.Interfaces
 {
     public interface ITriggerable
     {
-        public Task RunTriggerAsync(string email, string fileName, string fileUrl, CancellationToken cancellationToken);
+        public Task RunAsync(string email, string fileName, string fileUrl, CancellationToken cancellationToken);
     }
 }

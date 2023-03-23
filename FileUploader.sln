@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{711BF27D-E69C-491C-9108-BB7A407D7CC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure", "Azure\Azure.csproj", "{2538EB71-91B4-4E4C-B29B-CA822E60A40A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,13 @@ Global
 		{711BF27D-E69C-491C-9108-BB7A407D7CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{711BF27D-E69C-491C-9108-BB7A407D7CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{711BF27D-E69C-491C-9108-BB7A407D7CC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A9EC2C-C63E-40DC-88CE-115A137CD652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A9EC2C-C63E-40DC-88CE-115A137CD652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A9EC2C-C63E-40DC-88CE-115A137CD652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A9EC2C-C63E-40DC-88CE-115A137CD652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2538EB71-91B4-4E4C-B29B-CA822E60A40A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2538EB71-91B4-4E4C-B29B-CA822E60A40A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2538EB71-91B4-4E4C-B29B-CA822E60A40A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2538EB71-91B4-4E4C-B29B-CA822E60A40A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

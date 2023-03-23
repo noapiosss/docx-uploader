@@ -11,13 +11,13 @@ using Web.Configurations;
 
 namespace Web.Clients
 {
-    public class LogicAppTrigger : ITriggerable
+    public class FunctionTrigger : ITriggerable
     {
         private readonly string _postUrl;
 
-        public LogicAppTrigger(IOptionsMonitor<AppConfiguration> configuration)
+        public FunctionTrigger(IOptionsMonitor<AppConfiguration> configuration)
         {
-            _postUrl = configuration.CurrentValue.LogicAppPostUrl;
+            _postUrl = configuration.CurrentValue.FunctionTriggerPostUrl;
         }
 
         public async Task RunAsync(string email, string fileName, string fileUrl, CancellationToken cancellationToken)

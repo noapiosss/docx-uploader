@@ -12,13 +12,13 @@ namespace Web.Services
     {
         private readonly BlobServiceClient _blobServiceClient;
         private readonly BlobContainerClient _blobContainerClient;
-        private readonly ITriggerable _logicAppClient;
+        private readonly ITriggerable _functionTrigger;
 
-        public BlobService(BlobServiceClient blobServiceClient, ITriggerable logicAppClient)
+        public BlobService(BlobServiceClient blobServiceClient, ITriggerable functionTrigger)
         {
             _blobServiceClient = blobServiceClient;
             _blobContainerClient = _blobServiceClient.GetBlobContainerClient("docs");
-            _logicAppClient = logicAppClient;
+            _functionTrigger = functionTrigger;
         }
 
         public async Task UploadAsync(string email, Stream file, string fileName, CancellationToken cancellationToken)
@@ -50,7 +50,7 @@ namespace Web.Services
             }
 
             _ = await blobClient.UploadAsync(file, cancellationToken);
-            await _logicAppClient.RunTriggerAsync(email, fileName, blobClient.Uri.OriginalString, cancellationToken);
+            await _functionTrigger.RunAsync(email, fileName, blobClient.Uri.OriginalString, cancellationToken);
 
             return true;
         }

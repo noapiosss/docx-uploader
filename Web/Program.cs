@@ -17,17 +17,17 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.Configure<AppConfiguration>(builder.Configuration);
+builder.Services.Configure<AppConfiguration>(builder.Configuration.GetSection("AZURE"));
 
 builder.Services.AddSingleton(sp =>
 {
     IOptionsMonitor<AppConfiguration> configuration = sp.GetRequiredService<IOptionsMonitor<AppConfiguration>>();
-    return new BlobServiceClient(configuration.CurrentValue.AzureBlobConnectionString);
+    return new BlobServiceClient(configuration.CurrentValue.BlobConnectionString);
 });
 
 
 builder.Services.AddSingleton<IBlobService, BlobService>();
-builder.Services.AddSingleton<ITriggerable, LogicAppTrigger>();
+builder.Services.AddSingleton<ITriggerable, FunctionTrigger>();
 builder.Services.AddScoped<IValidator<FileTransferRequest>, FileTransferValidation>();
 
 WebApplication app = builder.Build();
