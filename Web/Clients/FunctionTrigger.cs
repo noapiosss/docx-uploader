@@ -22,7 +22,7 @@ namespace Web.Clients
 
         public async Task RunAsync(string email, string fileName, string fileUrl, CancellationToken cancellationToken)
         {
-            LogicAppTriggerRequest request = new()
+            SendEmailTriggerRequest request = new()
             {
                 EmailTo = email,
                 FileName = fileName,
