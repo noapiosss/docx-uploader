@@ -1,3 +1,4 @@
+using System;
 using Azure.Storage.Blobs;
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
@@ -25,9 +26,11 @@ builder.Services.AddSingleton(sp =>
     return new BlobServiceClient(configuration.CurrentValue.BlobConnectionString);
 });
 
+builder.Services.AddHttpClient<ITriggerable, FunctionTrigger>()
+    .SetHandlerLifetime(TimeSpan.FromSeconds(10));
 
 builder.Services.AddSingleton<IBlobService, BlobService>();
-builder.Services.AddSingleton<ITriggerable, FunctionTrigger>();
+
 builder.Services.AddScoped<IValidator<FileTransferRequest>, FileTransferValidation>();
 
 WebApplication app = builder.Build();

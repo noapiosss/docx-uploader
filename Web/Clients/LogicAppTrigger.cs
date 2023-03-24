@@ -1,4 +1,3 @@
-using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -14,10 +13,12 @@ namespace Web.Clients
     public class LogicAppTrigger : ITriggerable
     {
         private readonly string _postUrl;
+        private readonly HttpClient _client;
 
-        public LogicAppTrigger(IOptionsMonitor<AppConfiguration> configuration)
+        public LogicAppTrigger(IOptionsMonitor<AppConfiguration> configuration, HttpClient client)
         {
             _postUrl = configuration.CurrentValue.LogicAppPostUrl;
+            _client = client;
         }
 
         public async Task RunAsync(string email, string fileName, string fileUrl, CancellationToken cancellationToken)
@@ -31,9 +32,7 @@ namespace Web.Clients
 
             StringContent stringContent = new(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
-            using HttpClient client = new() { Timeout = TimeSpan.FromSeconds(5) };
-
-            _ = await client.PostAsync(_postUrl, stringContent, cancellationToken);
+            _ = await _client.PostAsync(_postUrl, stringContent, cancellationToken);
         }
     }
 }
